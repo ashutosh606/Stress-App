@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="">
+  <link rel="icon" type="image/png" href="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    NCD RISKS AND PREVENTION AT WORK PLACES
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="../assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+</head>
+    
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+      
+        document.getElementById('NCD-STATOMETER').style.display = 'none'
+        document.getElementById('NCD-SCREEN').style.display = 'none'
+        document.getElementById('STRESS-APPRAISAL').style.display = 'none'
+        document.getElementById('STRESS-METER').style.display = 'none'
+        var user_type = localStorage.getItem('_user_type')
+        //document.getElementById('Orgaisation_name').innerHTML=localStorage.getItem('_orgName')
+        if(parseInt(user_type)==2){
+            
+            document.getElementById('NCD-STATOMETER').style.display = 'block'
+            document.getElementById('STRESS-APPRAISAL').style.display = 'block'
+            document.getElementById('title').innerHTML = "NCD-METER FOR WORKPLACES"
+            
+        }else{
+            
+            document.getElementById('NCD-SCREEN').style.display = 'block'
+            document.getElementById('STRESS-METER').style.display = 'block'
+            document.getElementById('title').innerHTML = "NCD-METER FOR EMPLOYEES/INDIVIDUALS"
+            
+        }
+
+    })  
+  </script>
+    
+
+
+<body class="landing-page sidebar-collapse">
+  
+  <div class="main main-raised" style="margin-top: 50px; margin-bottom: 50px;">
+    <div class="container">
+      <div class="section text-center">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">            
+            
+            <!--<img src="img/gok.png" style="width: 100px;">
+            <br>-->
+            <img src="img/who.png" style="width: 75px;">
+                  <img src="img/vk.webp" style="width: 75px;">
+                  <img src="img/cph.png" style="width: 75px;">
+              <!--PREVENTION OF NON COMMUNICABLE DISEASES IN WORK PLACES-->
+
+            <h2 class="title"><span id="title"></span></h2>
+
+          </div>
+        </div>
+          
+          
+        <div class="features">
+          <div class="row">
+            <div class="col-md-3" id="NCD-STATOMETER">
+              <div class="info">
+                <div class="icon icon-info">
+                  <i class="material-icons">apartment</i>
+                </div>
+                <h4 class="info-title">NCD-STATOMETER</h4>
+                <a href="/ncdFeasibility">
+                <button class="btn btn-primary btn-raised">
+                  Start Assessment
+                </button>
+                </a>
+                <h5 class="info-title">Check status and monitor interventions to reduce NCDs, NCD risk factors and mental disorders in your workplace</h5>
+              </div>
+            </div>
+            <div class="col-md-3" id="NCD-SCREEN">
+              <div class="info">
+                <div class="icon icon-success">
+                  <i class="material-icons">group_work</i>
+                </div>
+                <h4 class="info-title">NCD-SCREEN</h4>
+                <a href="/ncdScreening">
+                <button class="btn btn-primary btn-raised">
+                  Start Assessment
+                </button>
+                </a>
+                <h5 class="info-title">Screen for NCDs, NCD risk factors and common mental disorders among Employees/Individuals</h5>
+              </div>
+            </div>
+            <div class="col-md-3" id="STRESS-APPRAISAL">
+              <div class="info">
+                <div class="icon icon-danger">
+                  <i class="material-icons">check_box</i>
+                </div>
+                <h4 class="info-title">STRESS-APPRAISAL </h4>
+                <a href="/ncdRapid">
+                <button class="btn btn-primary btn-raised">
+                  Start Assessment
+                </button>
+                </a>
+                <h5 class="info-title">Checklist for rapid appraisal of stress reduction interventions</h5>
+              </div>
+            </div>
+            <div class="col-md-3" id="STRESS-METER">
+              <div class="info">
+                <div class="icon icon-warning">
+                  <i class="material-icons">group</i>
+                </div>
+                <h4 class="info-title">STRESS-METER</h4>
+                <a href="/evaluateStress">
+                <button class="btn btn-primary btn-raised">
+                  Start Assessment
+                </button>
+                </a>
+                  <h5 class="info-title">Assess and classify harmful work-stress among Employees/Individuals</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    <div class="row" style="">
+      <div class="col-md-6 ml-auto mr-auto text-center" style="padding: 25px;">
+        <!--<a href="/logout">Logout</a>
+        <br>-->
+        <p style="font-size: 0.7em;">POWERED BY AKA LABS</p>
+      </div>
+    </div>
+  </div>
+  <!-- <footer class="footer footer-default">
+    <div class="container">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com/">
+              Creative Tim
+            </a>
+          </li>
+          <li>
+            <a href="https://www.creative-tim.com/presentation">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="https://www.creative-tim.com/blog">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="https://www.creative-tim.com/license">
+              Licenses
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, made with <i class="material-icons">favorite</i> by
+        <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a> for a better web.
+      </div>
+    </div>
+  </footer> -->
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+  <script src="../assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <!--  Google Maps Plugin    -->
+  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
+</body>
+
+</html>

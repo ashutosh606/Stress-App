@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="">
+  <link rel="icon" type="image/png" href="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    TOOL TO ASSESS AND CLASSIFY WORK STRESS : TAWS -16 | NIMHANS | HOME
+  </title>
+ <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="../assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+    
+    <script type="text/javascript">   
+    $(document).ready(function(){ 
+        
+      
+
+     document.getElementById('selected_user').value=-1
+     document.getElementById('orglabel').display='none'
+        
+    })
+        
+    function gotohome(){
+        
+      
+        
+        
+        
+        if(parseInt(document.getElementById('selected_user').value)==-1){
+             alert("Please select whether you want to proceed as an Employee or a Health Manager")
+        }
+        
+        if(parseInt(document.getElementById('selected_user').value)==0 || parseInt(document.getElementById('selected_user').value)==2){
+           if(parseInt(document.getElementById('organization').value)==-1){
+               alert("Please select the Organization you belong to before you proceed")
+           }else{
+               localStorage.setItem('_orgName', document.getElementById('organization').value) 
+               localStorage.setItem('_user_type', document.getElementById('selected_user').value)
+                window.location.href = '/ncdhome'
+              
+               
+           }
+        }
+        else{
+               
+               
+           }
+           
+        
+       
+    }
+        
+    function select_radio(id){
+
+	document.getElementById('selected_user').value=-1
+    var radio_element_0 = document.getElementById(0)
+    var radio_element_2 = document.getElementById(2)
+   
+    var txt = " ";
+
+
+        
+    
+        if(parseInt(id)==0){
+            radio_element_0.classList.add("btn-rose")
+           
+            radio_element_2.classList.remove("btn-rose")
+            document.getElementById('orglabel').display='block'
+            txt = "If your organization name is not listed above, Please contact your Organization's Health Manager to enroll your Organization"
+            
+            document.getElementById('orglabel').innerHTML=txt
+        }
+        
+      
+        if(parseInt(id)==2){
+            radio_element_2.classList.add("btn-rose")
+          
+            radio_element_0.classList.remove("btn-rose")
+            document.getElementById('orglabel').display='block'
+            txt = "If your organization name is not listed above, Please CLICK HERE"
+            
+            document.getElementById('orglabel').innerHTML=txt.link("/ncdOrgRegistration")
+        }
+        
+      
+      
+        document.getElementById('selected_user').value = id
+    
+    // For question 18  if the selected option is Yes, go to the next question, else go to 20th question
+	
+    
+   
+    
+    
+    
+}
+    </script>
+
+<body class="login-page sidebar-collapse">
+  
+    <input type="hidden" id="selected_user" name="selected_user" >
+    <input type="hidden" id="selected_org" name="selected_org" >
+    
+    <div class="container">
+      <div class="row" style="margin-top: 75px;">
+        <div class="col-lg-6 col-md-6 ml-auto mr-auto">
+          <div class="card card-login">
+            <!-- <form class="form" method="post" action="/login"> -->
+              <div class="card-header card-header-amber text-center">
+                <div class="social-line">
+                  <!--<img src="img/who.png" style="width: 75px;">-->
+                  <img src="img/nimhans.png" style="width: 75px;">
+                  <img src="img/cph.png" style="width: 75px;">
+                </div>
+                <h4 class="card-title" style="color:black">TOOL TO ASSESS AND CLASSIFY WORK STRESS <br> TAWS -16</h4>
+              </div>
+              
+              
+              <div class="card-body" style="padding-top: 15px; margin-left: 15px;">
+                
+                <!--<p style="font-weight: bold;">Greetings from NIMHANS!</p>-->
+                <center><p style="font-weight: bold;">Work-related stress, especially in chronic and harmful proportions, is a known risk factor for onset and progression of Non Communicable Diseases (NCDs) and mental disorders. Regular and early identification of work stress is important from health and productivity perspective.</p></center>
+                <center><p style="font-weight: bold;">This “Tool to assess and classify work stress (TAWS – 16)” will help in identification of stress due to key work related stressors. It is short, easy to understand and can be interviewer or self-administered. Based on the responses provided, an inbuilt algorithm provides your “work stress score” and “level of stress”.</p></center>
+               
+
+             
+                <center><button id="district_taluk_btn" class="btn btn-rose btn-raised" data-toggle="modal" data-target="#homeModal">Start Assessment</button></center>
+                <br>
+              </div>
+              
+             
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 50px;">
+        <div class="col-md-6 ml-auto mr-auto text-center">
+          <!-- <p style="font-weight: bold;">DISTRICT LEVEL PREPAREDNESS AND PERFORMANCE FOR COVID-19 MANAGEMENT</p> -->
+          <p style="font-size: 1em;">POWERED BY AKA LABS</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+          
+        <div class="modal-body">
+        
+          <center><p style="font-weight: bold">Please read information about the stress level assessment for employees at workplace and privacy policy</p></center>
+            <center><p><a href="/policy" target="_blank" style="font-weight: 400; text-align: center">HERE</a></p></center>
+        <br>
+          
+            <p style="font-weight: bold"> I am:</p>
+            
+            <button class="btn btn-round" id="0" style="margin-bottom: 4px; white-space:normal" onclick="select_radio('0')"><b>An Employee – Wanting to Participate in stress Assessment as part of my Organization's Initiative</b></button>
+           
+            <button class="btn btn-round" id="2" style="margin-bottom: 4px; white-space:normal"  onclick="select_radio('2')"><b>A Health Manager - Wanting to Implement organize the stress assessment for the employees of my Organization </b></button>
+            
+                       
+         
+        <br>
+        <br>
+        <select class="form-control" id="organization" style="width: 100%;">
+          <option value="-1">Select</option>
+          <option value="1">MINDERA</option>
+          <option value="2">TVS</option>
+          <option value="3">HPCL</option>
+          <option value="4">BPCL</option>
+          <option value="5">RECOUP</option>
+          <option value="6">SHESI</option>
+          <option value="7">AMRTPHR</option>
+          <option value="8">SHI</option>
+          </select>
+
+<!--           
+          <p style="font-weight: bold" id="organizationName"> I belong to the organization:</p>
+            
+                        <select class="form-control" id="organization" style="width: 100%;">
+                        <option value="-1">Select</option>
+                        <option value="2">Mindera</option>
+                        <option value="3">TVS</option>
+                        <option value="4">Test4</option>
+                        
+                        </select>
+         <br> -->
+            
+       
+            
+            <p style="font-weight: bold" id="orglabel"> If your organization name is not listed above, Please  <a href="/ncdOrgRegistration">CLICK HERE</a></p>
+          
+        </div>
+        <div class="modal-footer">
+          
+            <button class="btn btn-rose btn-raised" style="" onclick="gotohome()">Continue ></button>
+             
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+  <script src="../assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <!--  Google Maps Plugin    -->
+  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
+</body>
+
+</html>
