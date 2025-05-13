@@ -15,8 +15,12 @@ from ncd_data_json import *
 app = Bottle()
 
 # Use the MongoDB URI from config_vars.py
-client = MongoClient(MONGODB_URI)
-db = client.castest
+
+# db = client.castest
+client = MongoClient(MONGODB_URI)  # connects to mongodb://127.0.0.1:27017/castest
+db = client["castest"]
+collection = db["rapid"]
+
 
 # Keep the existing connection as a backup option or for specific collections
 # The Atlas connection is failing with DNS error, so let's use only the primary connection
@@ -49,11 +53,11 @@ def ncd_stress():
 def ncd_screening():
     data = get_screening_json()
     return template('templates/assessment_screening_home.tpl', data=data)
-# 
-# @app.route('/pip install pymongo')
-# def ncd_rapid():
-#     data = get_rapid_json()
-#     return template('templates/assessment_rapid_home.tpl', data=data)
+
+@app.route('/ncdRapid')
+def ncd_rapid():
+    data = get_rapid_json()
+    return template('templates/assessment_rapid_home.tpl', data=data)
 
 @app.route('/ncdFeasibility')
 def ncd_feasibility():
@@ -123,31 +127,35 @@ def add_ncd_Stress():
         print("IN add NCD stress")
         assessment_data = json.loads(assessment_data)
         print(assessment_data)
+
         metadata = assessment_data[60]
         subelements = metadata['metadata']
         organization = subelements['organization']
+
         if organization == "TVS":
-            #cur = mydb.stress_assessments.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
-            cur = mydb.stress_tvs.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+            cur = mydb.stress_tvs.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
         elif organization == "BPCL":
-            cur = mydb.stress_bpcl.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+            cur = mydb.stress_bpcl.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
         elif organization == "HPCL":
-            cur = mydb.stress_hpcl.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+            cur = mydb.stress_hpcl.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
         elif organization == "RECOUP":
-            cur = mydb.stress_recoup.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+            cur = mydb.stress_recoup.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
         elif organization == "SHESI":
-            cur = mydb.stress_shesi.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+            cur = mydb.stress_shesi.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
         elif organization == "AMRTPHR":
-            cur = mydb.stress_amrtphr.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+            cur = mydb.stress_amrtphr.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
         elif organization == "SHI":
-            cur = mydb.stress_shi.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+            cur = mydb.stress_shi.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
         else:
-            cur = mydb.stress_assessments.insert({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
-            
+            cur = mydb.stress_assessments.insert_one({'ncd_stress_data': assessment_data, 'time_stamp': time_stamp})
+        
+        print("Inserted stress assessment with ID:", cur.inserted_id)
+
     except Exception as e:
-        print(e)
+        print("Error inserting stress data:", e)
 
     return {'status': 'ok'}
+
 
 @app.post('/add_ncdfeasibility_assessment')
 def add_ncd_feasibility():
@@ -168,10 +176,12 @@ def add_ncd_rapid():
     assessment_data = request.forms.get('data')
     time_stamp = time.time()
 
+  
     try:
         print("Received Data:", assessment_data)  # Log the received data
         assessment_data = json.loads(assessment_data)
-        db.rapid_assessments.insert({'ncd_rapid_data': assessment_data, 'time_stamp': time_stamp})
+        # collection.insert({'ncd_rapid_data': assessment_data, 'time_stamp': time_stamp})
+        collection.insert_one({'ncd_rapid_data': assessment_data, 'time_stamp': time_stamp})
         print("Data inserted successfully")
     except Exception as e:
         print("Error inserting data:", e)
@@ -247,7 +257,7 @@ def test_db():
 
 ######################### Static Routes Start #########################
 
-@app.route('/<filename:re:.*\..*>')
+@app.route(r'/<filename:re:.*\..*>')  # Use raw string to avoid invalid escape sequence
 def javascripts(filename):
     return static_file(filename, root='static')
 
