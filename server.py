@@ -165,7 +165,7 @@ def add_ncd_feasibility():
     try:
         assessment_data = json.loads(assessment_data)
         # Store in the database using the MONGODB_URI connection
-        db.feasibility_assessments.insert({'ncd_feasibility_data': assessment_data, 'time_stamp': time_stamp})
+        db.feasibility_assessments.insert_one({'ncd_feasibility_data': assessment_data, 'time_stamp': time_stamp})
     except Exception as e:
         print(e)
 
@@ -266,6 +266,11 @@ def enable_cors():
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Methods'] = 'PUT, GET, POST, DELETE, OPTIONS'
     response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
+
+
+@app.route('/api/organizations')
+def get_organizations():
+    return static_file('organizations.json', root='static', mimetype='application/json')
 
 ######################### Static Routes End #########################
 

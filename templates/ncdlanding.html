@@ -106,6 +106,46 @@
     
     
 }
+
+// const organizations = [
+//     { value: '1', name: 'MINDERA' },
+//     { value: '2', name: 'TVS' },
+//     { value: '3', name: 'HPCL' },
+//     { value: '4', name: 'BPCL' },
+//     { value: '5', name: 'RECOUP' },
+//     { value: '6', name: 'SHESI' },
+//     { value: '7', name: 'AMRTPHR' },
+//     { value: '8', name: 'SHI' }
+// ];
+
+// $(document).ready(function() {
+//     const select = document.getElementById('organization');
+//     organizations.forEach(org => {
+//         const option = document.createElement('option');
+//         option.value = org.value;
+//         option.textContent = org.name;
+//         select.appendChild(option);
+//     });
+// });
+
+
+$(document).ready(function () {
+    const select = document.getElementById('organization');
+    
+    $.getJSON('/api/organizations', function (organizations) {
+        organizations.forEach(org => {
+            const option = document.createElement('option');
+            option.value = org.name;
+            option.textContent = org.name;
+            select.appendChild(option);
+        });
+    });
+
+    document.getElementById('selected_user').value = -1;
+    document.getElementById('orglabel').style.display = 'none';
+});
+
+
     </script>
 
 <body class="login-page sidebar-collapse">
@@ -132,7 +172,7 @@
                 
                 <!--<p style="font-weight: bold;">Greetings from NIMHANS!</p>-->
                 <center><p style="font-weight: bold;">Work-related stress, especially in chronic and harmful proportions, is a known risk factor for onset and progression of Non Communicable Diseases (NCDs) and mental disorders. Regular and early identification of work stress is important from health and productivity perspective.</p></center>
-                <center><p style="font-weight: bold;">This “Tool to assess and classify work stress (TAWS – 16)” will help in identification of stress due to key work related stressors. It is short, easy to understand and can be interviewer or self-administered. Based on the responses provided, an inbuilt algorithm provides your “work stress score” and “level of stress”.</p></center>
+                <center><p style="font-weight: bold;">This "Tool to assess and classify work stress (TAWS - 16)" will help in identification of stress due to key work related stressors. It is short, easy to understand and can be interviewer or self-administered. Based on the responses provided, an inbuilt algorithm provides your "work stress score" and "level of stress".</p></center>
                
 
              
@@ -175,7 +215,7 @@
           
             <p style="font-weight: bold"> I am:</p>
             
-            <button class="btn btn-round" id="0" style="margin-bottom: 4px; white-space:normal" onclick="select_radio('0')"><b>An Employee – Wanting to Participate in stress Assessment as part of my Organization's Initiative</b></button>
+            <button class="btn btn-round" id="0" style="margin-bottom: 4px; white-space:normal" onclick="select_radio('0')"><b>An Employee - Wanting to Participate in stress Assessment as part of my Organization's Initiative</b></button>
            
             <button class="btn btn-round" id="2" style="margin-bottom: 4px; white-space:normal"  onclick="select_radio('2')"><b>A Health Manager - Wanting to Implement organize the stress assessment for the employees of my Organization </b></button>
             
@@ -185,15 +225,7 @@
         <br>
         <select class="form-control" id="organization" style="width: 100%;">
           <option value="-1">Select</option>
-          <option value="1">MINDERA</option>
-          <option value="2">TVS</option>
-          <option value="3">HPCL</option>
-          <option value="4">BPCL</option>
-          <option value="5">RECOUP</option>
-          <option value="6">SHESI</option>
-          <option value="7">AMRTPHR</option>
-          <option value="8">SHI</option>
-          </select>
+        </select>
 
 <!--           
           <p style="font-weight: bold" id="organizationName"> I belong to the organization:</p>
